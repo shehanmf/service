@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.3 (tags/2.3-7528; 2013-04-29T19:34:10+0000) JAXWS-RI/2.2.8 JAXWS/2.2 svn-revision#unknown. --><xs:schema xmlns:tns="http://service.ecompilerlab/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://service.ecompilerlab/">
+
+<xs:element name="doCompile" type="tns:doCompile"/>
+
+<xs:element name="doCompileResponse" type="tns:doCompileResponse"/>
+
+<xs:element name="getAllAvailableLibraries" type="tns:getAllAvailableLibraries"/>
+
+<xs:element name="getAllAvailableLibrariesResponse" type="tns:getAllAvailableLibrariesResponse"/>
+
+<xs:element name="getInfoByPlatform" type="tns:getInfoByPlatform"/>
+
+<xs:element name="getInfoByPlatformResponse" type="tns:getInfoByPlatformResponse"/>
+
+<xs:element name="getLibrariesByID" type="tns:getLibrariesByID"/>
+
+<xs:element name="getLibrariesByIDResponse" type="tns:getLibrariesByIDResponse"/>
+
+<xs:element name="getSupportedPlatforms" type="tns:getSupportedPlatforms"/>
+
+<xs:element name="getSupportedPlatformsResponse" type="tns:getSupportedPlatformsResponse"/>
+
+<xs:complexType name="getSupportedPlatforms">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getSupportedPlatformsResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:platforms" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="doCompile">
+<xs:sequence>
+<xs:element name="request" type="tns:compileRequest" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="compileRequest">
+<xs:sequence>
+<xs:element name="code" type="xs:string" minOccurs="0"/>
+<xs:element name="compileOnly" type="xs:boolean"/>
+<xs:element name="libraryIDs" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="platform" type="tns:platforms" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="doCompileResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:compileResponse" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="compileResponse">
+<xs:sequence>
+<xs:element name="resultString" type="xs:string" minOccurs="0"/>
+<xs:element name="state" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getLibrariesByID">
+<xs:sequence>
+<xs:element name="ids" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getLibrariesByIDResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:libraryEntity" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="libraryEntity">
+<xs:sequence>
+<xs:element name="baseLibPath" type="xs:string" minOccurs="0"/>
+<xs:element name="fromCloud" type="xs:boolean"/>
+<xs:element name="id" type="xs:int"/>
+<xs:element name="libNames" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+<xs:element name="platform" type="tns:platforms" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getInfoByPlatform">
+<xs:sequence>
+<xs:element name="platforms" type="tns:platforms" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getInfoByPlatformResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:platformsInfo" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="platformsInfo">
+<xs:sequence>
+<xs:element name="platform" type="tns:platforms" minOccurs="0"/>
+<xs:element name="versionInfo" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllAvailableLibraries">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getAllAvailableLibrariesResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:libraryEntity" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:simpleType name="platforms">
+<xs:restriction base="xs:string">
+<xs:enumeration value="JAVA"/>
+<xs:enumeration value="C"/>
+<xs:enumeration value="C_PLUS"/>
+<xs:enumeration value="C_SHARP"/>
+<xs:enumeration value="PYTHON"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:schema>
