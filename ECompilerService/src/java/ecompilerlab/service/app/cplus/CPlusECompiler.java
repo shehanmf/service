@@ -1,21 +1,19 @@
-package ecompilerlab.service.app.c;
+package ecompilerlab.service.app.cplus;
 
 import ecompilerlab.service.app.AbstractECompiler;
 import ecompilerlab.service.app.CompileResult;
 import ecompilerlab.service.impl.LibraryEntity;
 
-import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Shehan
- * Date: 7/7/13
- * Time: 4:24 PM
+ * Date: 7/23/13
+ * Time: 7:46 AM
  * To change this template use File | Settings | File Templates.
  */
-public class CECompiler extends AbstractECompiler
+public class CPlusECompiler extends AbstractECompiler
 {
   @Override
   public CompileResult compile(String className, String code, LibraryEntity[] classPathLibs)
@@ -25,11 +23,11 @@ public class CECompiler extends AbstractECompiler
     try
     {
       //write temp file
-      PrintWriter writer = new PrintWriter("H:\\Project\\service\\tmpdir\\tmpc\\" + className + ".c", "UTF-8");
+      PrintWriter writer = new PrintWriter("H:\\Project\\service\\tmpdir\\tmpcplus\\" + className + ".cpp", "UTF-8");
       writer.println(code);
       writer.close();
 
-      return CProcessExecuter.compile(className);
+      return CPlusProcessExecuter.compile(className);
     }
     catch (Exception e)
     {

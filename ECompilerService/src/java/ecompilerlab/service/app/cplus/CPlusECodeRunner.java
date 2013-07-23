@@ -1,4 +1,4 @@
-package ecompilerlab.service.app.c;
+package ecompilerlab.service.app.cplus;
 
 import ecompilerlab.service.app.AbstractECodeRunner;
 import ecompilerlab.service.app.CompileResult;
@@ -7,18 +7,19 @@ import ecompilerlab.service.app.ExecuteResult;
 /**
  * Created with IntelliJ IDEA.
  * User: Shehan
- * Date: 7/7/13
- * Time: 4:24 PM
+ * Date: 7/23/13
+ * Time: 7:44 AM
  * To change this template use File | Settings | File Templates.
  */
-public class CECodeRunner extends AbstractECodeRunner
+public class CPlusECodeRunner extends AbstractECodeRunner
 {
+
   @Override
   public ExecuteResult executeCode(String className, CompileResult compileResult)
   {
 
-    String exeName = "H:\\Project\\service\\tmpdir\\tmpc\\" + className + ".exe";
+    String exeName = "H:\\Project\\service\\tmpdir\\tmpcplus\\" + className + ".exe";
 
-    return CProcessExecuter.runExe(exeName);
+    return CPlusProcessExecuter.runExe(exeName);
   }
 }

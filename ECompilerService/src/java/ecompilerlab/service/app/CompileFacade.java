@@ -30,6 +30,7 @@ public class CompileFacade
   public CompileResponse doCompile(CompileRequest request)
   {
 
+    String className = null;
     final ECompilerAbstractFactory eCompiler = ECompilerFactoryCreator.getECompiler(request.getPlatform());
     final AbstractECodeFormatter codeFormatter = eCompiler.createCodeFormatter();
 
@@ -38,7 +39,7 @@ public class CompileFacade
       final String formattedCode = codeFormatter
         .generate(request.getCode(), ApplicationSettings.getInstance().getTestClassName());
 
-      final String className = codeFormatter.getClassName(formattedCode);
+      className = codeFormatter.getClassName(formattedCode);
 
       final AbstractECompiler codeCompiler = eCompiler.createCodeCompiler();
 
@@ -76,6 +77,10 @@ public class CompileFacade
     catch (InvalidSourceException e)
     {
       return null;
+    }
+    finally
+    {
+      eCompiler.createResourceCleaner().cleanResources(className);
     }
   }
 

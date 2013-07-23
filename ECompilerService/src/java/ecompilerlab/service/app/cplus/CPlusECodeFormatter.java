@@ -1,4 +1,4 @@
-package ecompilerlab.service.app.c;
+package ecompilerlab.service.app.cplus;
 
 import ecompilerlab.service.app.AbstractECodeFormatter;
 import ecompilerlab.service.app.InvalidSourceException;
@@ -9,12 +9,13 @@ import java.security.SecureRandom;
 /**
  * Created with IntelliJ IDEA.
  * User: Shehan
- * Date: 7/7/13
- * Time: 4:24 PM
+ * Date: 7/23/13
+ * Time: 7:43 AM
  * To change this template use File | Settings | File Templates.
  */
-public class CECodeFormatter extends AbstractECodeFormatter
+public class CPlusECodeFormatter extends AbstractECodeFormatter
 {
+
   private SecureRandom random = new SecureRandom();
 
   @Override

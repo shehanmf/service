@@ -29,17 +29,20 @@ public class ClassFileManager extends ForwardingJavaFileManager
 
   private ClassLoader classLoader;
 
-  public ClassFileManager(StandardJavaFileManager
-                            standardManager,final LibraryEntity[] libraryEntities)
+  private String compiledClassName;
+
+  public ClassFileManager(String className, StandardJavaFileManager standardManager, LibraryEntity[] libraryEntities)
   {
+
     super(standardManager);
+    this.compiledClassName = className;
 
     classLoader = new ECompilerDynamicClassLoader(Arrays.asList(libraryEntities))
     {
       @Override
       public Class handleGenaratedClass(String className)
       {
-        if(className.equals("ECompilerTest"))
+        if(className.equals(compiledClassName))
         {
           byte[] b = jclassObject.getBytes();
           return super.defineClass(className, jclassObject.getBytes(), 0, b.length);
@@ -47,7 +50,6 @@ public class ClassFileManager extends ForwardingJavaFileManager
         return null;
       }
     };
-
   }
 
 

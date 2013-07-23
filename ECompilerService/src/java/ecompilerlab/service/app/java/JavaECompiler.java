@@ -39,7 +39,7 @@ public class JavaECompiler extends AbstractECompiler
     JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
 
     final StandardJavaFileManager standardFileManager = compiler.getStandardFileManager(null, null, null);
-    JavaFileManager fileManager = new ClassFileManager(standardFileManager,classPathLibs);
+    JavaFileManager fileManager = new ClassFileManager(className,standardFileManager,classPathLibs);
 
     List<JavaFileObject> jfiles = new ArrayList<JavaFileObject>();
     jfiles.add(new StringJavaFileObject(className, code));

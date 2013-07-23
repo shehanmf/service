@@ -1,5 +1,7 @@
 package ecompilerlab.service.app;
 
+import ecompilerlab.service.impl.PlatformsInfo;
+
 /**
  * Created with IntelliJ IDEA.
  * User: shehan.fernando
@@ -9,11 +11,15 @@ package ecompilerlab.service.app;
  */
 public abstract class ECompilerAbstractFactory
 {
-  abstract AbstractECodeFormatter createCodeFormatter();
+  public abstract AbstractECodeFormatter createCodeFormatter();
 
-  abstract AbstractECompiler createCodeCompiler();
+  public abstract AbstractECompiler createCodeCompiler();
 
-  abstract AbstractECodeRunner createCodeRunner();
+  public abstract AbstractECodeRunner createCodeRunner();
 
-  abstract AbstractEResourceFinder createResourceFinder();
+  public abstract AbstractEResourceFinder createResourceFinder();
+
+  public abstract AbstractCleanUpResource createResourceCleaner();
+
+  public abstract PlatformsInfo getPlatformsInfo();
 }

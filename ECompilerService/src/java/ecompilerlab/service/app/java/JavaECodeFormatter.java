@@ -23,6 +23,8 @@ public class JavaECodeFormatter extends AbstractECodeFormatter
 
   public static final char OPEN_BRACKET = '{';
 
+  private static Pattern classPrt = Pattern.compile(".*\\s*class\\s+([a-zA-Z_$][a-zA-Z\\d_$]*)\\s*.*?");
+
   private String source;
 
   private String suggestedClassName;
@@ -34,7 +36,15 @@ public class JavaECodeFormatter extends AbstractECodeFormatter
    */
   public String generate(String snippet,String defaultclassName) throws InvalidSourceException
   {
+
+
     this.source = snippet;
+
+    if (isCompleteClass(source))
+    {
+      return source;
+    }
+
     this.suggestedClassName = defaultclassName;
 
 
@@ -130,5 +140,12 @@ public class JavaECodeFormatter extends AbstractECodeFormatter
     {
       throw new InvalidSourceException("Incomplete source : mismatch of open\\close brackets");
     }
+  }
+
+  private boolean isCompleteClass(final String source)
+  {
+    final Matcher matcher = classPrt.matcher(source);
+
+    return matcher.find();
   }
 }
