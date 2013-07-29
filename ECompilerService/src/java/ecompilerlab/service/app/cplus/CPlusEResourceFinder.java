@@ -3,6 +3,7 @@ package ecompilerlab.service.app.cplus;
 import ecompilerlab.service.app.AbstractEResourceFinder;
 import ecompilerlab.service.impl.LibraryEntity;
 import ecompilerlab.service.impl.ResourceLookUpEntry;
+import ecompilerlab.service.impl.SuggestionText;
 
 import java.util.List;
 
@@ -19,5 +20,11 @@ public class CPlusEResourceFinder extends AbstractEResourceFinder
   public ResourceLookUpEntry[] lookUp(String className, List<LibraryEntity> libraryEntities)
   {
     return null;
+  }
+
+  @Override
+  public SuggestionText[] suggestResources(String[] resources, List<LibraryEntity> libraryEntities)
+  {
+    return new SuggestionText[0];
   }
 }

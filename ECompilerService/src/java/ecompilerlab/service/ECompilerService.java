@@ -14,6 +14,7 @@ import ecompilerlab.service.impl.LibraryType;
 import ecompilerlab.service.impl.Platforms;
 import ecompilerlab.service.impl.PlatformsInfo;
 import ecompilerlab.service.impl.ResourceLookUpEntry;
+import ecompilerlab.service.impl.SuggestionText;
 
 import javax.jws.WebService;
 import javax.jws.WebMethod;
@@ -75,9 +76,21 @@ public class ECompilerService implements ECompiler
   @Override
   @WebMethod(operationName = "classLookUp")
   public ResourceLookUpEntry[] classLookUp(@WebParam(name = "className") String className,
-                              @WebParam(name = "platforms") Platforms platforms,
-                              @WebParam(name = "libraryIDs") String[] libraryIDs)
+                                           @WebParam(name = "platforms") Platforms platforms,
+                                           @WebParam(name = "libraryIDs") String[] libraryIDs)
   {
     return LibraryFacade.getInstance().classLookUp(className, platforms, getLibrariesByID(libraryIDs));
   }
+
+  @Override
+  @WebMethod(operationName = "getValidSuggestedStrings")
+  public SuggestionText[] getValidSuggestedStrings(@WebParam(name = "platforms") Platforms platforms,
+                                           @WebParam(name = "availableStrings") String[] availableStrings,
+                                           @WebParam(name = "libraryIDs") String[] libraryIDs)
+  {
+    return LibraryFacade.getInstance()
+      .getValidSuggestedStrings(platforms, availableStrings, getLibrariesByID(libraryIDs));
+  }
+
+
 }

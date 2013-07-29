@@ -2,6 +2,7 @@ package ecompilerlab.service.app;
 
 import ecompilerlab.service.impl.LibraryEntity;
 import ecompilerlab.service.impl.ResourceLookUpEntry;
+import ecompilerlab.service.impl.SuggestionText;
 
 import java.util.List;
 
@@ -15,4 +16,6 @@ import java.util.List;
 public abstract class AbstractEResourceFinder
 {
   public abstract ResourceLookUpEntry[] lookUp(String className, List<LibraryEntity> libraryEntities);
+
+  public abstract SuggestionText[] suggestResources(String[] resources,List<LibraryEntity> libraryEntities);
 }

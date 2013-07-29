@@ -3,6 +3,7 @@ package ecompilerlab.service.app;
 import ecompilerlab.service.impl.LibraryEntity;
 import ecompilerlab.service.impl.Platforms;
 import ecompilerlab.service.impl.ResourceLookUpEntry;
+import ecompilerlab.service.impl.SuggestionText;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,5 +53,24 @@ public class LibraryFacade
     final AbstractEResourceFinder resourceFinder = eCompiler.createResourceFinder();
     return resourceFinder.lookUp(className, platformLibs);
 
+  }
+
+  public SuggestionText[] getValidSuggestedStrings(Platforms platforms, String[] availableStrings,
+                                           final LibraryEntity[] allLibraries)
+  {
+      
+    List<LibraryEntity> platformLibs = new ArrayList<LibraryEntity>();
+    for (LibraryEntity libraryEntity : allLibraries)
+    {
+      if (libraryEntity.getPlatform().equals(platforms))
+      {
+        platformLibs.add(libraryEntity);
+      }
+    }
+
+    final ECompilerAbstractFactory eCompiler = ECompilerFactoryCreator.getECompiler(platforms);
+    final AbstractEResourceFinder resourceFinder = eCompiler.createResourceFinder();
+
+    return resourceFinder.suggestResources(availableStrings,platformLibs);
   }
 }

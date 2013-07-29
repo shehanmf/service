@@ -11,6 +11,7 @@ import ecompilerlab.service.impl.LibraryType;
 import ecompilerlab.service.impl.Platforms;
 import ecompilerlab.service.impl.PlatformsInfo;
 import ecompilerlab.service.impl.ResourceLookUpEntry;
+import ecompilerlab.service.impl.SuggestionText;
 
 /**
  * @author Shehan
@@ -30,5 +31,7 @@ public interface ECompiler
 
   public LibraryType[] getSupportedLibraryTypes();
 
-  public ResourceLookUpEntry[] classLookUp(String className,Platforms platforms,String[] libIds);
+  public ResourceLookUpEntry[] classLookUp(String className, Platforms platforms, String[] libIds);
+
+  public SuggestionText[] getValidSuggestedStrings(Platforms platforms, String[] availableStrings, String[] libIds);
 }
