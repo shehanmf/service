@@ -41,7 +41,6 @@ public class JavaECodeRunner extends AbstractECodeRunner
 
 
       final ClassLoader classLoader = fileManager.getClassLoader(null);
-//      ClassPathHacker.addURL(new File("H:\\Project\\service\\lib\\joda\\joda-time-2.2.jar").toURI().toURL(),classLoader);
       Class<?> cls = classLoader.loadClass(className);
       Method meth = cls.getMethod("main", String[].class);
       String[] params = null; // init params accordingly

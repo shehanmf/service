@@ -1,4 +1,4 @@
-package ecompilerlab.service.app.c;
+package ecompilerlab.service.app.python;
 
 import ecompilerlab.service.app.CompileResult;
 import ecompilerlab.service.app.ExecuteResult;
@@ -11,22 +11,22 @@ import java.io.InputStreamReader;
 /**
  * Created with IntelliJ IDEA.
  * User: Shehan
- * Date: 7/22/13
- * Time: 5:24 PM
+ * Date: 8/3/13
+ * Time: 4:14 PM
  * To change this template use File | Settings | File Templates.
  */
-public class CProcessExecuter
+public class PythonProcessExecuter
 {
-
-  public static CCompileResult compile(String fileName)
+  public static PythonCompileResult compile(String fileName)
   {
-    String tmpfileDir = "H:\\Project\\service\\tmpdir\\tmpc\\" + fileName;
+    String tmpfileDir = "H:\\Project\\service\\tmpdir\\tmppython\\" + fileName;
 
     try
     {
-      String[] command = {"gcc", tmpfileDir + ".c", "-o", tmpfileDir + ".exe"};
+//      String[] command = {"g++", tmpfileDir + ".cpp", "-o", tmpfileDir + ".exe"};
+      String[] command = {"py", "-m", "py_compile", tmpfileDir + ".py"};
       ProcessBuilder probuilder = new ProcessBuilder(command);
-      probuilder.directory(new File("H:\\MinGW\\bin"));
+      probuilder.directory(new File("H:\\Python33"));
 
       Process process = probuilder.start();
 
@@ -38,7 +38,7 @@ public class CProcessExecuter
       final int i = process.exitValue();
       if (i == 0)
       {
-        return new CCompileResult(CompileResult.RESULT_SUCCESS, null);
+        return new PythonCompileResult(CompileResult.RESULT_SUCCESS, null);
       }
       else
       {
@@ -49,9 +49,9 @@ public class CProcessExecuter
           bf.append("\n" + line);
         }
 
-        String errorMsg = bf.toString().replace(tmpfileDir + ".c", "[CODE] ");
+        String errorMsg = bf.toString().replace(tmpfileDir + ".py", "[CODE] ");
 
-        return new CCompileResult(CompileResult.RESULT_COMPILE_ERROR, errorMsg);
+        return new PythonCompileResult(CompileResult.RESULT_COMPILE_ERROR, errorMsg);
 
       }
 
@@ -64,15 +64,15 @@ public class CProcessExecuter
   }
 
 
-  public static CExecuteResult runExe(String exePath)
+  public static PythonExecuteResult runExe(String fileName)
   {
 
     try
     {
 
-      String[] command = {exePath};
+      String[] command = {"py", fileName};
       ProcessBuilder probuilder = new ProcessBuilder(command);
-      probuilder.directory(new File("H:\\MinGW\\bin"));
+      probuilder.directory(new File("H:\\Python33"));
 
       Process process = probuilder.start();
 
@@ -99,7 +99,7 @@ public class CProcessExecuter
           bf.append("\n" + line);
         }
 
-        return new CExecuteResult(ExecuteResult.RESULT_SUCCESS, null, bf.toString());
+        return new PythonExecuteResult(ExecuteResult.RESULT_SUCCESS, null, bf.toString());
       }
       else
       {
@@ -111,7 +111,7 @@ public class CProcessExecuter
           bf.append("\n" + line);
 
         }
-        return new CExecuteResult(ExecuteResult.RESULT_RUNTIME_ERROR, bf.toString(), null);
+        return new PythonExecuteResult(ExecuteResult.RESULT_RUNTIME_ERROR, bf.toString(), null);
       }
 
     }
@@ -130,9 +130,9 @@ public class CProcessExecuter
     try
     {
 
-      String[] command = {"gcc", "--version"};
+      String[] command = {"py", "--version"};
       ProcessBuilder probuilder = new ProcessBuilder(command);
-      probuilder.directory(new File("H:\\MinGW\\bin"));
+      probuilder.directory(new File("H:\\Python33"));
 
       Process process = probuilder.start();
 
@@ -157,6 +157,4 @@ public class CProcessExecuter
     }
     return null;
   }
-
-
 }

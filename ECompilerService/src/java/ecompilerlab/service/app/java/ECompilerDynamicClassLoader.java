@@ -62,6 +62,7 @@ public abstract class ECompilerDynamicClassLoader extends ClassLoader
     }
     catch (Exception e)
     {
+      e.printStackTrace();
     }
 
     try

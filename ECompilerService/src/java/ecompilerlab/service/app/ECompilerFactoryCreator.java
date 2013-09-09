@@ -3,6 +3,7 @@ package ecompilerlab.service.app;
 import ecompilerlab.service.app.c.CECompilerFactory;
 import ecompilerlab.service.app.cplus.CPlusECompilerFactory;
 import ecompilerlab.service.app.java.JavaECompilerFactory;
+import ecompilerlab.service.app.python.PythonECompilerFactory;
 import ecompilerlab.service.impl.Platforms;
 
 /**
@@ -27,6 +28,10 @@ public class ECompilerFactoryCreator
 
       case C_PLUS:
         return new CPlusECompilerFactory();
+
+      case PYTHON:
+        return new PythonECompilerFactory();
+
 
     }
     return null;

@@ -111,8 +111,10 @@ public class CPlusProcessExecuter
         while ((line = errbr.readLine()) != null)
         {
           bf.append("\n" + line);
-          return new CExecuteResult(ExecuteResult.RESULT_SUCCESS, bf.toString(), null);
+
         }
+
+        return new CExecuteResult(ExecuteResult.RESULT_RUNTIME_ERROR, bf.toString(), null);
       }
 
     }

@@ -17,13 +17,13 @@ public class CPlusCleanUpResource  extends AbstractCleanUpResource
   @Override
   public void cleanResources(String fileName)
   {
-//    String sourceName =  "H:\\Project\\service\\tmpdir\\tmpcplus\\" + fileName + ".cpp";
-//    String exeName =  "H:\\Project\\service\\tmpdir\\tmpcplus\\" + fileName + ".exe";
-//
-//    File delete = new File(sourceName);
-//    delete.delete();
-//
-//    delete = new File(exeName);
-//    delete.delete();
+    String sourceName =  "H:\\Project\\service\\tmpdir\\tmpcplus\\" + fileName + ".cpp";
+    String exeName =  "H:\\Project\\service\\tmpdir\\tmpcplus\\" + fileName + ".exe";
+
+    File delete = new File(sourceName);
+    delete.delete();
+
+    delete = new File(exeName);
+    delete.delete();
   }
 }
