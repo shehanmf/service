@@ -2,6 +2,7 @@ package ecompilerlab.service.app;
 
 import ecompilerlab.service.impl.LibraryEntity;
 import ecompilerlab.service.impl.Platforms;
+import ecompilerlab.service.impl.TagSupportData;
 
 import java.util.ArrayList;
 
@@ -16,6 +17,8 @@ public class TmpDb
 {
 
   private static ArrayList<LibraryEntity> list = new ArrayList<LibraryEntity>();
+
+  private static ArrayList<TagSupportData> tagData = new ArrayList<TagSupportData>();
 
   static
   {
@@ -76,5 +79,10 @@ public class TmpDb
       }
     }
     return tmpList;
+  }
+
+  public static void saveTag(TagSupportData tagSupportData)
+  {
+    tagData.add(tagSupportData);
   }
 }

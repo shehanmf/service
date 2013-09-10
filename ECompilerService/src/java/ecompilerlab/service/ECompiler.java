@@ -12,6 +12,7 @@ import ecompilerlab.service.impl.Platforms;
 import ecompilerlab.service.impl.PlatformsInfo;
 import ecompilerlab.service.impl.ResourceLookUpEntry;
 import ecompilerlab.service.impl.SuggestionText;
+import ecompilerlab.service.impl.TagSupportData;
 
 /**
  * @author Shehan
@@ -34,4 +35,6 @@ public interface ECompiler
   public ResourceLookUpEntry[] classLookUp(String className, Platforms platforms, String[] libIds);
 
   public SuggestionText[] getValidSuggestedStrings(Platforms platforms, String[] availableStrings, String[] libIds);
+
+  public void saveTag(TagSupportData tagSupportData);
 }

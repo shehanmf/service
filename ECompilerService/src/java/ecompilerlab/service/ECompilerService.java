@@ -7,6 +7,7 @@ package ecompilerlab.service;
 import ecompilerlab.service.app.CompileFacade;
 import ecompilerlab.service.app.LibraryFacade;
 import ecompilerlab.service.app.PlatformFacade;
+import ecompilerlab.service.app.SolutionFacade;
 import ecompilerlab.service.impl.CompileRequest;
 import ecompilerlab.service.impl.CompileResponse;
 import ecompilerlab.service.impl.LibraryEntity;
@@ -15,6 +16,7 @@ import ecompilerlab.service.impl.Platforms;
 import ecompilerlab.service.impl.PlatformsInfo;
 import ecompilerlab.service.impl.ResourceLookUpEntry;
 import ecompilerlab.service.impl.SuggestionText;
+import ecompilerlab.service.impl.TagSupportData;
 
 import javax.jws.WebService;
 import javax.jws.WebMethod;
@@ -92,5 +94,9 @@ public class ECompilerService implements ECompiler
       .getValidSuggestedStrings(platforms, availableStrings, getLibrariesByID(libraryIDs));
   }
 
-
+  @Override
+  public void saveTag(TagSupportData tagSupportData)
+  {
+    SolutionFacade.getInstance().saveTag(tagSupportData);
+  }
 }
