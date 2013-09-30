@@ -1,6 +1,7 @@
 package ecompilerlab.service.app.c;
 
 import ecompilerlab.service.app.AbstractECodeRunner;
+import ecompilerlab.service.app.ApplicationSettings;
 import ecompilerlab.service.app.CompileResult;
 import ecompilerlab.service.app.ExecuteResult;
 
@@ -17,7 +18,7 @@ public class CECodeRunner extends AbstractECodeRunner
   public ExecuteResult executeCode(String className, CompileResult compileResult)
   {
 
-    String exeName = "H:\\Project\\service\\tmpdir\\tmpc\\" + className + ".exe";
+    String exeName = ApplicationSettings.getInstance().getTempFolderPath() + "\\tmpc\\" + className + ".exe";
 
     return CProcessExecuter.runExe(exeName);
   }

@@ -1,6 +1,7 @@
 package ecompilerlab.service.app.cplus;
 
 import ecompilerlab.service.app.AbstractCleanUpResource;
+import ecompilerlab.service.app.ApplicationSettings;
 
 import java.io.File;
 
@@ -17,8 +18,10 @@ public class CPlusCleanUpResource  extends AbstractCleanUpResource
   @Override
   public void cleanResources(String fileName)
   {
-    String sourceName =  "H:\\Project\\service\\tmpdir\\tmpcplus\\" + fileName + ".cpp";
-    String exeName =  "H:\\Project\\service\\tmpdir\\tmpcplus\\" + fileName + ".exe";
+
+    String tempFolderName = getTempFolderName(ApplicationSettings.getInstance().getTempFolderPath() + "\\tmpcplus");
+    String sourceName =  tempFolderName + fileName + ".cpp";
+    String exeName =  tempFolderName + fileName + ".exe";
 
     File delete = new File(sourceName);
     delete.delete();

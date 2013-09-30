@@ -1,5 +1,6 @@
 package ecompilerlab.service.app;
 
+
 /**
  * Created with IntelliJ IDEA.
  * User: shehan.fernando
@@ -18,8 +19,14 @@ public class ApplicationSettings
 
   private String libraryBasePath;
 
+  private String tmpFolderPath;
 
-  public static ApplicationSettings getInstance()
+  private String mingw_home;
+
+  private String pythonHome;
+
+
+    public static ApplicationSettings getInstance()
   {
     return settings;
   }
@@ -28,7 +35,8 @@ public class ApplicationSettings
 
   static
   {
-    APPLICATION_SETTING_PATH = "D:\\Personal\\Project\\ecompilerlab\\ECompilerService\\src\\ecompilerlab\\service\\app\\settings.dat";
+    String userDirectory = System.getenv("ELAB_HOME");
+    APPLICATION_SETTING_PATH = userDirectory + "\\app\\settings.dat";
   }
 
   public void setJavaHome(String javaHome)
@@ -60,4 +68,29 @@ public class ApplicationSettings
   {
     this.libraryBasePath = libraryBasePath;
   }
+
+    public String getTempFolderPath() {
+        return this.tmpFolderPath;
+    }
+
+    public void setTmpFolderPath(String tmpFolderPath) {
+        this.tmpFolderPath = tmpFolderPath;
+    }
+
+    public void setMinGWHome(String mingw_home) {
+        this.mingw_home = mingw_home;
+    }
+
+    public String getMinGWHome()
+    {
+       return this.mingw_home;
+    }
+
+    public String getPythonHome() {
+        return pythonHome;
+    }
+
+    public void setPythonHome(String pythonHome) {
+        this.pythonHome = pythonHome;
+    }
 }

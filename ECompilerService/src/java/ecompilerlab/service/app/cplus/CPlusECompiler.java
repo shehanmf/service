@@ -1,6 +1,7 @@
 package ecompilerlab.service.app.cplus;
 
 import ecompilerlab.service.app.AbstractECompiler;
+import ecompilerlab.service.app.ApplicationSettings;
 import ecompilerlab.service.app.CompileResult;
 import ecompilerlab.service.impl.LibraryEntity;
 
@@ -23,7 +24,8 @@ public class CPlusECompiler extends AbstractECompiler
     try
     {
       //write temp file
-      PrintWriter writer = new PrintWriter("H:\\Project\\service\\tmpdir\\tmpcplus\\" + className + ".cpp", "UTF-8");
+      PrintWriter writer = new PrintWriter(ApplicationSettings.getInstance().getTempFolderPath() +
+              "\\tmpcplus\\" + className + ".cpp", "UTF-8");
       writer.println(code);
       writer.close();
 

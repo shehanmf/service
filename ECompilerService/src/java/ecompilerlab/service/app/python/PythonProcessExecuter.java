@@ -1,5 +1,6 @@
 package ecompilerlab.service.app.python;
 
+import ecompilerlab.service.app.ApplicationSettings;
 import ecompilerlab.service.app.CompileResult;
 import ecompilerlab.service.app.ExecuteResult;
 
@@ -19,14 +20,14 @@ public class PythonProcessExecuter
 {
   public static PythonCompileResult compile(String fileName)
   {
-    String tmpfileDir = "H:\\Project\\service\\tmpdir\\tmppython\\" + fileName;
+    String tmpfileDir = ApplicationSettings.getInstance().getTempFolderPath() + "\\tmppython\\" + fileName;
 
     try
     {
 //      String[] command = {"g++", tmpfileDir + ".cpp", "-o", tmpfileDir + ".exe"};
       String[] command = {"py", "-m", "py_compile", tmpfileDir + ".py"};
       ProcessBuilder probuilder = new ProcessBuilder(command);
-      probuilder.directory(new File("H:\\Python33"));
+      probuilder.directory(new File(ApplicationSettings.getInstance().getPythonHome()));
 
       Process process = probuilder.start();
 
@@ -72,7 +73,7 @@ public class PythonProcessExecuter
 
       String[] command = {"py", fileName};
       ProcessBuilder probuilder = new ProcessBuilder(command);
-      probuilder.directory(new File("H:\\Python33"));
+      probuilder.directory(new File(ApplicationSettings.getInstance().getPythonHome()));
 
       Process process = probuilder.start();
 
@@ -132,7 +133,7 @@ public class PythonProcessExecuter
 
       String[] command = {"py", "--version"};
       ProcessBuilder probuilder = new ProcessBuilder(command);
-      probuilder.directory(new File("H:\\Python33"));
+      probuilder.directory(new File(ApplicationSettings.getInstance().getPythonHome()));
 
       Process process = probuilder.start();
 

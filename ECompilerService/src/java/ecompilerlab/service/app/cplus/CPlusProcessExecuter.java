@@ -1,5 +1,6 @@
 package ecompilerlab.service.app.cplus;
 
+import ecompilerlab.service.app.ApplicationSettings;
 import ecompilerlab.service.app.CompileResult;
 import ecompilerlab.service.app.ExecuteResult;
 import ecompilerlab.service.app.c.CCompileResult;
@@ -22,13 +23,13 @@ public class CPlusProcessExecuter
 
   public static CCompileResult compile(String fileName)
   {
-    String tmpfileDir = "H:\\Project\\service\\tmpdir\\tmpcplus\\" + fileName;
+    String tmpfileDir = ApplicationSettings.getInstance().getTempFolderPath() + "\\tmpcplus\\" + fileName;
 
     try
     {
       String[] command = {"g++", tmpfileDir + ".cpp", "-o", tmpfileDir + ".exe"};
       ProcessBuilder probuilder = new ProcessBuilder(command);
-      probuilder.directory(new File("H:\\MinGW\\bin"));
+      probuilder.directory(new File(ApplicationSettings.getInstance().getMinGWHome() + "\\bin"));
 
       Process process = probuilder.start();
 
@@ -74,7 +75,7 @@ public class CPlusProcessExecuter
 
       String[] command = {exePath};
       ProcessBuilder probuilder = new ProcessBuilder(command);
-      probuilder.directory(new File("H:\\MinGW\\bin"));
+      probuilder.directory(new File(ApplicationSettings.getInstance().getMinGWHome() + "\\bin"));
 
       Process process = probuilder.start();
 
@@ -135,7 +136,7 @@ public class CPlusProcessExecuter
 
       String[] command = {"g++", "--version"};
       ProcessBuilder probuilder = new ProcessBuilder(command);
-      probuilder.directory(new File("H:\\MinGW\\bin"));
+      probuilder.directory(new File(ApplicationSettings.getInstance().getMinGWHome() + "\\bin"));
 
       Process process = probuilder.start();
 

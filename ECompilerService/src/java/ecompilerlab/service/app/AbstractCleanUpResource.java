@@ -1,5 +1,7 @@
 package ecompilerlab.service.app;
 
+import java.io.File;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Shehan
@@ -9,5 +11,16 @@ package ecompilerlab.service.app;
  */
 public abstract class AbstractCleanUpResource
 {
-  abstract public void cleanResources(String fileName);
+    abstract public void cleanResources(String fileName);
+
+    public String getTempFolderName(String path)
+    {
+        File theDir = new File(path);
+        if (!theDir.exists())
+        {
+            theDir.mkdir();
+        }
+        return theDir.getAbsolutePath();
+
+    }
 }

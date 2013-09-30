@@ -1,5 +1,6 @@
 package ecompilerlab.service.app.c;
 
+import ecompilerlab.service.app.ApplicationSettings;
 import ecompilerlab.service.app.CompileResult;
 import ecompilerlab.service.app.ExecuteResult;
 
@@ -20,13 +21,13 @@ public class CProcessExecuter
 
   public static CCompileResult compile(String fileName)
   {
-    String tmpfileDir = "H:\\Project\\service\\tmpdir\\tmpc\\" + fileName;
+    String tmpfileDir = ApplicationSettings.getInstance().getTempFolderPath() + "\\tmpc\\" + fileName;
 
     try
     {
       String[] command = {"gcc", tmpfileDir + ".c", "-o", tmpfileDir + ".exe"};
       ProcessBuilder probuilder = new ProcessBuilder(command);
-      probuilder.directory(new File("H:\\MinGW\\bin"));
+      probuilder.directory(new File(ApplicationSettings.getInstance().getMinGWHome() + "\\bin"));
 
       Process process = probuilder.start();
 
@@ -72,7 +73,7 @@ public class CProcessExecuter
 
       String[] command = {exePath};
       ProcessBuilder probuilder = new ProcessBuilder(command);
-      probuilder.directory(new File("H:\\MinGW\\bin"));
+      probuilder.directory(new File(ApplicationSettings.getInstance().getMinGWHome() + "\\bin"));
 
       Process process = probuilder.start();
 
@@ -132,7 +133,7 @@ public class CProcessExecuter
 
       String[] command = {"gcc", "--version"};
       ProcessBuilder probuilder = new ProcessBuilder(command);
-      probuilder.directory(new File("H:\\MinGW\\bin"));
+      probuilder.directory(new File(ApplicationSettings.getInstance().getMinGWHome() + "\\bin"));
 
       Process process = probuilder.start();
 

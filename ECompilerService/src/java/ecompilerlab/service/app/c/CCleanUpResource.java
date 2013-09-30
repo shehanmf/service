@@ -1,6 +1,7 @@
 package ecompilerlab.service.app.c;
 
 import ecompilerlab.service.app.AbstractCleanUpResource;
+import ecompilerlab.service.app.ApplicationSettings;
 
 import java.io.File;
 
@@ -17,8 +18,10 @@ public class CCleanUpResource extends AbstractCleanUpResource
   @Override
   public void cleanResources(String fileName)
   {
-    String sourceName =  "H:\\Project\\service\\tmpdir\\tmpc\\" + fileName + ".c";
-    String exeName =  "H:\\Project\\service\\tmpdir\\tmpc\\" + fileName + ".exe";
+
+    String tempFolderName = getTempFolderName(ApplicationSettings.getInstance().getTempFolderPath() + "\\tmpc");
+    String sourceName =  tempFolderName + fileName + ".c";
+    String exeName =  tempFolderName + fileName + ".exe";
 
     File delete = new File(sourceName);
     delete.delete();

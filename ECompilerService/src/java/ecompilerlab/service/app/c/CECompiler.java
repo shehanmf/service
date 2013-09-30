@@ -1,6 +1,7 @@
 package ecompilerlab.service.app.c;
 
 import ecompilerlab.service.app.AbstractECompiler;
+import ecompilerlab.service.app.ApplicationSettings;
 import ecompilerlab.service.app.CompileResult;
 import ecompilerlab.service.impl.LibraryEntity;
 
@@ -25,7 +26,8 @@ public class CECompiler extends AbstractECompiler
     try
     {
       //write temp file
-      PrintWriter writer = new PrintWriter("H:\\Project\\service\\tmpdir\\tmpc\\" + className + ".c", "UTF-8");
+      PrintWriter writer = new PrintWriter(ApplicationSettings.getInstance().getTempFolderPath() +
+              "\\tmpc\\" + className + ".c", "UTF-8");
       writer.println(code);
       writer.close();
 

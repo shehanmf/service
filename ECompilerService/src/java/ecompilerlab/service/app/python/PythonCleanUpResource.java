@@ -1,6 +1,7 @@
 package ecompilerlab.service.app.python;
 
 import ecompilerlab.service.app.AbstractCleanUpResource;
+import ecompilerlab.service.app.ApplicationSettings;
 
 import java.io.File;
 
@@ -16,7 +17,9 @@ public class PythonCleanUpResource extends AbstractCleanUpResource
   @Override
   public void cleanResources(String fileName)
   {
-    String sourceName = "H:\\Project\\service\\tmpdir\\tmppython\\" + fileName + ".py";
+    String tempFolderName = getTempFolderName(ApplicationSettings.getInstance().getTempFolderPath() + "\\tmppython");
+
+    String sourceName = tempFolderName + fileName + ".py";
 
     File delete = new File(sourceName);
     delete.delete();

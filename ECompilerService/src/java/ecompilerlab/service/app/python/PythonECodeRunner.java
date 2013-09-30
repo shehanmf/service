@@ -1,6 +1,7 @@
 package ecompilerlab.service.app.python;
 
 import ecompilerlab.service.app.AbstractECodeRunner;
+import ecompilerlab.service.app.ApplicationSettings;
 import ecompilerlab.service.app.CompileResult;
 import ecompilerlab.service.app.ExecuteResult;
 
@@ -17,7 +18,7 @@ public class PythonECodeRunner extends AbstractECodeRunner
   public ExecuteResult executeCode(String className, CompileResult compileResult)
   {
 
-    String fileName = "H:\\Project\\service\\tmpdir\\tmppython\\" + className + ".py";
+    String fileName = ApplicationSettings.getInstance().getTempFolderPath() + "\\tmppython\\" + className + ".py";
 
     return PythonProcessExecuter.runExe(fileName);
   }

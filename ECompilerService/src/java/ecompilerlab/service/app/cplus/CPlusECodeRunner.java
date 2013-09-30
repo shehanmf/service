@@ -1,6 +1,7 @@
 package ecompilerlab.service.app.cplus;
 
 import ecompilerlab.service.app.AbstractECodeRunner;
+import ecompilerlab.service.app.ApplicationSettings;
 import ecompilerlab.service.app.CompileResult;
 import ecompilerlab.service.app.ExecuteResult;
 
@@ -18,7 +19,7 @@ public class CPlusECodeRunner extends AbstractECodeRunner
   public ExecuteResult executeCode(String className, CompileResult compileResult)
   {
 
-    String exeName = "H:\\Project\\service\\tmpdir\\tmpcplus\\" + className + ".exe";
+    String exeName = ApplicationSettings.getInstance().getTempFolderPath() + "\\tmpcplus\\" + className + ".exe";
 
     return CPlusProcessExecuter.runExe(exeName);
   }

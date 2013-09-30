@@ -73,9 +73,9 @@ public class JavaEResourceFinder extends AbstractEResourceFinder
 
       try
       {
-        //(1) search java runtime
-        JarFile rtJar = new JarFile("D:\\Java\\jre7\\lib\\rt.jar");
 
+        //(1) search java runtime
+        JarFile rtJar = new JarFile(ApplicationSettings.getInstance().getJavaHome() + "\\jre\\lib\\rt.jar");
         final Enumeration<JarEntry> entries = rtJar.entries();
         while (entries.hasMoreElements())
         {
@@ -169,7 +169,7 @@ public class JavaEResourceFinder extends AbstractEResourceFinder
     try
     {
       //(1) search java runtime
-      JarFile rtJar = new JarFile("D:\\Java\\jre7\\lib\\rt.jar");
+      JarFile rtJar = new JarFile(ApplicationSettings.getInstance().getJavaHome() + "\\jre\\lib\\rt.jar");
 
       final Enumeration<JarEntry> entries = rtJar.entries();
       while (entries.hasMoreElements())

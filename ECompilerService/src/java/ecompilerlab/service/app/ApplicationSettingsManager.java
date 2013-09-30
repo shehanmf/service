@@ -33,9 +33,12 @@ public class ApplicationSettingsManager
       System.err.println("error loading preferences - using default");
     }
 
-    settings.setJavaHome(properties.getProperty("java_home", ""));
+    settings.setJavaHome(properties.getProperty("java_home"));
     settings.setTestClassName("ECompilerTest");
-    settings.setLibraryBasePath("H:\\Project\\service\\lib");
+    settings.setLibraryBasePath(properties.getProperty("support_libs"));
+    settings.setTmpFolderPath(properties.getProperty("temp_folder"));
+    settings.setMinGWHome(properties.getProperty("mingw_home"));
+    settings.setPythonHome(properties.getProperty("python_home"));
   }
   //settings.dat
 }
